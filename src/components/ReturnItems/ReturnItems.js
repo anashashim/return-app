@@ -1,44 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './ReturnItems.scss';
 import Back from '../../assets/images/back.png';
+import storage from '../../utilities/storage';
+import { getOrders } from '../../services/OrderRequestService';
 
 const ReturnItems = () => {
-	const order =  {
-		 "products": [
-		  {
-		   "id": "1",
-		   "title": "Organic Cotton Crew T-shirt",
-		   "price": "25",
-		   "image": "https://image.made-in-china.com/44f3j00aiYTGfhsIebl/Custom-T-Shirts-100-Cotton-Men-Tshirt-Tee-Shirt-Printing-T-Shirt-Polo-T-Shirt-for-Men-Women-Plain-T-Shirt.jpg",
-		   "isReturnCompleted": false
-		  },
-		  {
-		   "id": "2",
-		   "title": "Blue Elegant Tshirt",
-		   "price": "20",
-		   "image": "https://5.imimg.com/data5/YX/OO/TA/ANDROID-108727015/product-jpeg-500x500.jpg",
-		   "isReturnCompleted": false
-		  },
-		  {
-		   "title": "Best Black T-Shirts",
-		   "price": 17,
-		   "image": "https://media.gq.com/photos/602ea741937235d39fc13158/master/w_2000,h_1334,c_limit/duo.jpg",
-		   "isReturnCompleted": false,
-		   "id": "3"
-		  },
-		  {
-		   "title": "Women Polo Neck Yellow T-Shirt",
-		   "price": 28,
-		   "image": "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/13692274/2021/6/9/56582833-0546-4c06-a9f2-9c3a86a1962f1623222398148-HRX-by-Hrithik-Roshan-Women-Tshirts-6201623222397705-1.jpg",
-		   "isReturnCompleted": false,
-		   "id": "4"
-		  }
-		 ],
-		 "email": "test1@abc.com",
-		 "id": "12345"
-		};
-	const [products, setProducts] = useState(order.products);
+	const [products, setProducts] = useState([]);
 	const [count, setCount] = useState(0);
 	const navigate = useNavigate();
 	const selected = (id)=> {
@@ -61,7 +30,20 @@ const ReturnItems = () => {
 
 	const back = () => {
 		navigate('/');
-	}
+	};
+
+	useEffect(()=>{
+		const orderId = storage.get('orderId');
+		const emailId = storage.get('emailId');
+		if(orderId && emailId){
+			getOrders(orderId, emailId).then(data => {
+				console.log(data.data[0]);
+				setProducts(data.data[0].products)
+			});
+		}
+		else back();
+		
+	},[])
 
 	return(
 		<div className='content'>

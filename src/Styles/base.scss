@@ -35,6 +35,11 @@ input {
     color: #333;
     font-weight: 500;
     margin-bottom: 12px;
+    &:focus {
+        border-color: $theme;
+        outline: none;
+        box-shadow: none;
+    }
 }
 
 button {

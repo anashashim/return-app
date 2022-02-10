@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
 
 body {
     margin: 0;
@@ -6,4 +6,54 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $bg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: $black;
+}
+
+small {
+    color: $grey;
+    font-size: 0.7rem;
+}
+
+input,
+button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 5px;
+    height: 40px;
+}
+
+input {
+    border: 1px solid $border;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+button {
+    &.primary {
+        color: $white;
+        background-color: $theme;
+        border: none;
+        font-weight: 600;
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+
+    &.list {
+        li {
+            width: 100%;
+            display: block;
+        }
+    }
 }

@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<OrderRequest/>}/>
             <Route exact path="/return-items" element={<ReturnItems/>}/>
-            <Route exact path="/sucsess" element={<ReturnSuccess/>}/>
+            <Route exact path="/success" element={<ReturnSuccess/>}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </div>

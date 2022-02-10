@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './ReturnItems.scss';
 import Back from '../../assets/images/back.png';
 
@@ -39,6 +40,7 @@ const ReturnItems = () => {
 		};
 	const [products, setProducts] = useState(order.products);
 	const [count, setCount] = useState(0);
+	const navigate = useNavigate();
 	const selected = (id)=> {
 		const newList = products.map((product) => {
 			if (product.id === id) {
@@ -53,10 +55,18 @@ const ReturnItems = () => {
 		});
 		setProducts(newList);
 	};
+	const returnItems = ()=> {
+		navigate('/success');
+	};
+
+	const back = () => {
+		navigate('/');
+	}
+
 	return(
 		<div className='content'>
 			<div className='content-header'>
-				<img src={Back} alt=""/>
+				<img src={Back} alt="Back button" onClick={back}/>
 				<div>
 					<h3>Select Items</h3>
 				</div>
@@ -78,7 +88,7 @@ const ReturnItems = () => {
 					
 				</ul>
 				{
-					count>0 && <button className='primary'>Return {count} Items</button>
+					count>0 && <button className='primary' onClick={returnItems}>Return {count} Items</button>
 				}
 			</div>
 		</div>

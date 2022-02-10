@@ -49,9 +49,13 @@
                 padding: 0;
             }
             .title {
-                font-size: 1rem;
+                font-size: 0.875rem;
                 font-weight: 400;
                 color: $black100;
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .price {
                 font-size: 0.875rem;

@@ -2,9 +2,9 @@
 
 A sample React application built for showing a demonstration of Returning products. \
 API is created using MOCKAPI.io https://mockapi.io/. \
-DEMO here : https://app-return.herokuapp.com/ \
+DEMO here : https://app-return.herokuapp.com/
 
-For locally running:
+For running locally: \
 Install nodejs, git into local machine \
 Checkout codebase \
 Do `npm install` \
